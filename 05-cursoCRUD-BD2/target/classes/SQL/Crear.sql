@@ -1,0 +1,1 @@
+CREATE TABLE curso (cod_curso INT PRIMARY KEY, nombre VARCHAR(255),duracion INT,precio DOUBLE);

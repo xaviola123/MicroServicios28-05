@@ -1,0 +1,64 @@
+RECURSO: libro
+
+Vamos a exponer un CRUD de libro que esta almacenado en una BD
+
+GET---->recuperar
+POST--->insertar
+PUT---->actualizar
+DELETE->eliminar
+
+http://localhost:8080/libros              GET: expone todos los libros
+http://localhost:8080/libros/{isbn}       GET: recupere el libro con el isbn indicado en la url
+http://localhost:8080/libros              POST: dar de alta un libro del que paso los datos en el cuerpo en formato JSON(@RequestBody)
+http://localhost:8080/libros              PUT: actualizar un libro del que paso los datos en el cuerpo en formato JSON (@RequestBody)
+http://localhost:8080/libros/{isbn}       DELETE: borrar el libro con el isbn indicado en la url   
+
+
+ORDEN DE CREACION:
+1- Crear el proyecto y poner las dependencias necesarias
+2- Definir el modelo de datos  (com.curso.model)
+3-crear caoa DAO(com.curso.dao)
+	3.1-crear interfaz que extends de JpaRepository<T,d> 
+		3.1.1-t---->tipo entidad
+		3.1.2-id.....> primary key
+		si se necesitan mas metodos que los que stan en JpaRepository se incoporan aquí
+		@Query("")
+		tipoDevuelve metodo (tipo Arg arg)
+		
+4- Capa de la lógica de negocio, capa de servicio (com.curso.service) 
+  4.1 Crear la interface
+  4.2 Crear clase que implemente esa interface (no olvidar incluir @Service) y declarar una varible de tipo dao y ponerle @Autowired
+5- Implementar el controlador (com.curso.controller)   (no olvidar @RestController en la clase y   @Autowired LibrosService service)
+6- Configuraciones 
+   En la clase lanzadora añadir los paquetes que tienen clases con anotaciones de spring
+   
+   
+   6.1@EntityScan(basePackages = "com.curso.model")---->paquete donde esta el entity model
+	  @EnableJpaRepositories(basePackages = "com.curso.dao")------->paquete donde sta el dao
+	  @SpringBootApplication(scanBasePackages = {"com.curso.controller","com.curso.service"})-->service y controller
+
+	6.2 en el application propeties incorporar las propiedades necesarias para poder trabajar con la BD
+		spring.application.name=03-libroCRUD-BD
+		spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+		spring.datasource.url=jdbc:mysql://localhost:3306/jueves23
+		spring.datasource.username="root"
+		spring.datasource.password="root"
+		
+		
+		spring.jpa.hibernate.ddl-auto=update
+		spring.jpa.show-sql=true
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
