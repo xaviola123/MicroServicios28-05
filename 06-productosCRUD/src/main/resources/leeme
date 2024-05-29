@@ -1,0 +1,19 @@
+1-Contruimos  poryecto maven con starter web,j conector java, dev tools y data jpa
+
+2-Creamos paquete com.curso.model y nos creamos nuestra clase modelo. de productos
+	2-1 atributos:nombre,stock,Uprecio
+	
+3-Nos creamos un paquete com.curso.service y creamos el service Interfaz y el serviceImpl,
+
+4-Nos cremos un paquete com.curso.controller y cremos el ProductoController.
+
+5-Configuracion de la apllication inicio.
+
+6-configuracion de las properties 
+		spring.application.name=06-productosCRUD
+		spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+		spring.datasource.url=jdbc:mysql://localhost:3306/almacen
+		spring.datasource.username=root
+		spring.datasource.password=root
+		spring.jpa.hibernate.ddl-auto=update
+		spring.jpa.show-sql=true
